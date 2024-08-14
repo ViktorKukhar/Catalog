@@ -3,7 +3,12 @@ class RecordsController < ApplicationController
 
   # GET /records or /records.json
   def index
+    if params[:tag]
+    @records = Record.joins(:tags).where(tags: { name: params[:tag] }).distinct
+    @tag = Tag.find_by(name: params[:tag])
+    else
     @records = Record.all
+  end
   end
 
   # GET /records/1 or /records/1.json
@@ -65,6 +70,6 @@ class RecordsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def record_params
-      params.require(:record).permit(:title, :description, :user_id)
+      params.require(:record).permit(:title, :description, :user_id, :tag_list)
     end
 end
