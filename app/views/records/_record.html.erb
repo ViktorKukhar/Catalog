@@ -11,6 +11,8 @@
       <% record.tags.each do |tag| %>
         <%= link_to tag.name, records_path(tag: tag.name), class: "badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill text-decoration-none" %>
       <% end %>
+      <%= link_to record.user.username, user_profile_path(record.user), class: "badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill text-decoration-none" %>
+
     </div>
   </div>
 </div>

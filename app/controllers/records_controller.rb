@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new ]
 
   # GET /records or /records.json
   def index
@@ -17,7 +18,7 @@ class RecordsController < ApplicationController
 
   # GET /records/new
   def new
-    @record = Record.new
+    @record = Record.new(user: current_user)
   end
 
   # GET /records/1/edit

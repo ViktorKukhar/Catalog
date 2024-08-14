@@ -1,0 +1,27 @@
+
+<%= render 'navbar' %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header">
+          <h3>Profile</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Username:</strong> <%= @user.username %></p>
+          <p><strong>Email:</strong> <%= @user.email %></p>
+          <p><strong>Joined:</strong> <%= @user.created_at.strftime("%B %d, %Y") %></p>
+          <% if current_user == @user %>
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+          <% end %>
+
+          <h4>Records</h4>
+          <% @user.records.each do |record| %>
+            <p><strong>Record Title:</strong> <%= record.title %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

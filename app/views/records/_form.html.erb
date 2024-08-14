@@ -26,14 +26,10 @@
     <%= form.text_field :user_id %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
   <div class="field">
-    <%= form.label :tag_list, "Tags (comma separated)" %>
+    <p><%= form.label :tag_list, "Tags (comma separated)" %></p>
     <%= form.text_field :tag_list, value: @record.tags.map(&:name).join(", ") %>
+
   </div>
 
   <div>

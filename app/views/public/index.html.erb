@@ -1,3 +1,9 @@
 
 <%# render 'footer' %>
 <%= render 'album' %>
+
+<% @users.each do |user| %>
+  <div>
+    <%= link_to user.email, user_profile_path(user) %>
+  </div>
+<% end %>

@@ -4,25 +4,31 @@ Record.delete_all
 User.delete_all
 Tag.delete_all
 
-# Reset primary keys (optional)
+ActiveRecord::Base.connection.execute("DELETE FROM records_tags")
+
+# Reset primary keys
 ActiveRecord::Base.connection.reset_pk_sequence!('records')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('tags')
+ActiveRecord::Base.connection.reset_pk_sequence!('records_tags')
 
 # Create 3 users
 user1 = User.create!(
+  username: "designer_pro2007",
   email: 'designer1@example.com',
   password: 'password123',
   password_confirmation: 'password123'
 )
 
 user2 = User.create!(
+  username: "engineer_super2005",
   email: 'engineer1@example.com',
   password: 'password123',
   password_confirmation: 'password123'
 )
 
 user3 = User.create!(
+  username: "architect_1337",
   email: 'architect1@example.com',
   password: 'password123',
   password_confirmation: 'password123'
