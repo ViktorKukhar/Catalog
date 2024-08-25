@@ -27,7 +27,7 @@ class RecordsController < ApplicationController
 
   # POST /records or /records.json
   def create
-    @record = Record.new(record_params)
+    @record = current_user.records.build(record_params)
 
     respond_to do |format|
       if @record.save
@@ -71,6 +71,7 @@ class RecordsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def record_params
-      params.require(:record).permit(:title, :description, :user_id, :tag_list)
+      params.require(:record).permit(:title, :description, :user_id, :tag_list, :image, :file)
     end
 end
+
