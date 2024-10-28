@@ -3,5 +3,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @record = Record.all
   end
-
 end

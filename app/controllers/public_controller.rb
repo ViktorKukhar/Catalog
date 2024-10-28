@@ -4,5 +4,4 @@ class PublicController < ApplicationController
     @tags = Tag.all
     @users = User.all
   end
-
 end
